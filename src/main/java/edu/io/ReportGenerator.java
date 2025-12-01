@@ -9,16 +9,13 @@ import java.util.stream.Collectors;
 public class ReportGenerator {
     public static void generate(Path path){
         ArrayList<Path> files;
-        int len = path.toString().length();
         int subdirectories = -1;
         int numOfFiles = 0;
         int subLevel = 0;
-        String ind = "    ";
-        Path tmppath;
+        String ind = "-";
         var parent = path;
         try(var fileTree = Files.walk(path)) {
             files = fileTree.collect(Collectors.toCollection(ArrayList::new));
-//          files.forEach(System.out::println);
 
             for (var file : files) {
                 if (Files.isDirectory(file)) {
